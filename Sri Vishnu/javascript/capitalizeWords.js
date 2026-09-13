@@ -26,7 +26,7 @@ async function main() {
 
     console.log("Capitalized sentence:", result);
 
-    rl.close();
+    rl.close() ;
 }
 
 main();
