@@ -1,0 +1,12 @@
+# Java compiled files
+*.class
+
+# Node.js dependencies
+node_modules/
+
+# Logs
+*.log
+
+# TypeScript generated JavaScript files
+# Uncomment the next line if you do not want to upload .js files
+# *.js

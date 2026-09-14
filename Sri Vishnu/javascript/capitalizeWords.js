@@ -24,7 +24,7 @@ async function main() {
 
     const result = capitalizedWords.join(" ");
 
-    console.log("Capitalized sentence:", result);
+    console.log("Capitalized sentence:",result);
 
     rl.close() ;
 }

@@ -1,34 +1,96 @@
 
+import * as readline from "readline";
+
 class Stack {
     private items: number[] = [];
+    private top: number = -1;
 
-    // Add an element to the stack
+    constructor(private capacity: number) {}
+
     push(value: number): void {
+        if (this.top === this.capacity - 1) {
+            console.log("Stack Overflow");
+            return;
+        }
+
         this.items.push(value);
+        this.top++;
+        console.log("Element pushed successfully.");
     }
 
-    // Remove and return the top element
-    pop(): number | undefined {
-        return this.items.pop();
+    pop(): void {
+        if (this.top === -1) {
+            console.log("Stack Underflow");
+            return;
+        }
+
+        const removed = this.items.pop();
+        this.top--;
+
+        console.log("Popped element:", removed);
     }
 
-    // Display the stack
     display(): void {
-        console.log("Stack:", this.items);
+        if (this.top === -1) {
+            console.log("Stack is empty.");
+            return;
+        }
+
+        console.log("Stack elements:", this.items);
     }
 }
 
-// Create a stack object
-const stack = new Stack();
+const rl = readline.createInterface({
+    input: process.stdin,
+    output: process.stdout
+});
 
-stack.push(10);
-stack.push(20);
-stack.push(30);
+function ask(question: string): Promise<string> {
+    return new Promise((resolve) => {
+        rl.question(question, resolve);
+    });
+}
 
-console.log("After pushing elements:");
-stack.display();
+async function main(): Promise<void> {
+    const capacity = Number(await ask("Enter stack capacity: "));
 
-console.log("Popped element:", stack.pop());
+    if (!Number.isInteger(capacity) || capacity <= 0) {
+        console.log("Please enter a positive integer.");
+        rl.close();
+        return;
+    }
 
-console.log("After popping:");
-stack.display();
+    const stack = new Stack(capacity);
+
+    while (true) {
+        console.log("\n1. Push");
+        console.log("2. Pop");
+        console.log("3. Display");
+        console.log("4. Exit");
+
+        const choice = Number(await ask("Enter your choice: "));
+
+        if (choice === 1) {
+            const value = Number(await ask("Enter element: "));
+
+            if (!Number.isFinite(value)) {
+                console.log("Please enter a valid number.");
+            } else {
+                stack.push(value);
+            }
+        } else if (choice === 2) {
+            stack.pop();
+        } else if (choice === 3) {
+            stack.display();
+        } else if (choice === 4) {
+            console.log("Program exited.");
+            break;
+        } else {
+            console.log("Invalid choice.");
+        }
+    }
+
+    rl.close();
+}
+
+main();

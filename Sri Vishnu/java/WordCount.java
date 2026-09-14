@@ -1,24 +1,23 @@
-
 import java.util.Scanner;
 
-public class second {
-
+public class WordCount {
     public static void main(String[] args) {
-
-        Scanner sc = new Scanner(System.in);
+        Scanner scanner = new Scanner(System.in);
 
         System.out.print("Enter a sentence: ");
-        String sentence = sc.nextLine().trim();
+        String sentence = scanner.nextLine().trim();
 
-        int wordCount = 0;
+        int wordCount;
 
-        if (!sentence.isEmpty()) {
+        if (sentence.isEmpty()) {
+            wordCount = 0;
+        } else {
             String[] words = sentence.split("\\s+");
             wordCount = words.length;
         }
 
         System.out.println("Number of words: " + wordCount);
 
-        sc.close();
+        scanner.close();
     }
 }
