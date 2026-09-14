@@ -7,6 +7,5 @@ node_modules/
 # Logs
 *.log
 
-# TypeScript generated JavaScript files
-# Uncomment the next line if you do not want to upload .js files
+# Optional: ignore generated JavaScript files
 # *.js
