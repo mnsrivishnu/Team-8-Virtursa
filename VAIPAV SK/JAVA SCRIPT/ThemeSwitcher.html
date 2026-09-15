@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Dynamic Theme Switcher</title>
+
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            padding: 50px;
+            background-color: white;
+            color: black;
+            transition: background-color 0.3s, color 0.3s;
+        }
+
+        .dark-mode {
+            background-color: #222;
+            color: white;
+        }
+
+        button {
+            padding: 10px 20px;
+            font-size: 16px;
+            cursor: pointer;
+        }
+    </style>
+</head>
+
+<body>
+
+    <h1>Dynamic Theme Switcher</h1>
+    <p>Click the button to change the theme.</p>
+
+    <button id="themeBtn">Dark Mode</button>
+
+    <script>
+        const themeBtn = document.getElementById("themeBtn");
+        const body = document.body;
+
+        themeBtn.addEventListener("click", () => {
+            body.classList.toggle("dark-mode");
+
+            const isDark = body.classList.contains("dark-mode");
+            themeBtn.textContent = isDark ? "Light Mode" : "Dark Mode";
+        });
+    </script>
+
+</body>
+</html>
