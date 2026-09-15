@@ -78,6 +78,6 @@ public class EmployeeFilter {
         {
             System.out.println(emp);
         }
-            
+            sc.close();
     }
 }
