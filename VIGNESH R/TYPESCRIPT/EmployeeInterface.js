@@ -1,8 +1,7 @@
 "use strict";
+Object.defineProperty(exports, "__esModule", { value: true });
+const prompt = require("prompt-sync")();
 class Developer {
-    id;
-    name;
-    salary;
     constructor(id, name, salary) {
         this.id = id;
         this.name = name;
@@ -13,9 +12,6 @@ class Developer {
     }
 }
 class Manager {
-    id;
-    name;
-    salary;
     constructor(id, name, salary) {
         this.id = id;
         this.name = name;
@@ -25,7 +21,16 @@ class Manager {
         console.log(`Manager -> ID: ${this.id}, Name: ${this.name}, Salary: ${this.salary}`);
     }
 }
-const developer = new Developer(101, "Vignesh", 40000);
-const manager = new Manager(102, "Rahul", 60000);
+console.log("Enter Developer Details");
+const devId = Number(prompt("ID: "));
+const devName = prompt("Name: ");
+const devSalary = Number(prompt("Salary: "));
+console.log("\nEnter Manager Details");
+const mgrId = Number(prompt("ID: "));
+const mgrName = prompt("Name: ");
+const mgrSalary = Number(prompt("Salary: "));
+const developer = new Developer(devId, devName, devSalary);
+const manager = new Manager(mgrId, mgrName, mgrSalary);
+console.log("\nEmployee Details:");
 developer.displayDetails();
 manager.displayDetails();

@@ -1,5 +1,7 @@
 "use strict";
-let number = 17;
+Object.defineProperty(exports, "__esModule", { value: true });
+const prompt = require("prompt-sync")();
+let number = Number(prompt("Enter a number: "));
 let isPrime = true;
 if (number <= 1) {
     isPrime = false;

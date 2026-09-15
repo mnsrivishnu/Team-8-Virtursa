@@ -1,3 +1,6 @@
+
+const prompt = require("prompt-sync")();
+
 interface Employee {
     id: number;
     name: string;
@@ -34,9 +37,21 @@ class Manager implements Employee {
     }
 }
 
-const developer = new Developer(101, "Vignesh", 40000);
-const manager = new Manager(102, "Rahul", 60000);
+console.log("Enter Developer Details");
+const devId = Number(prompt("ID: "));
+const devName = prompt("Name: ");
+const devSalary = Number(prompt("Salary: "));
 
+console.log("\nEnter Manager Details");
+const mgrId = Number(prompt("ID: "));
+const mgrName = prompt("Name: ");
+const mgrSalary = Number(prompt("Salary: "));
+
+const developer = new Developer(devId, devName, devSalary);
+const manager = new Manager(mgrId, mgrName, mgrSalary);
+
+console.log("\nEmployee Details:");
 developer.displayDetails();
 manager.displayDetails();
+
 export {};

@@ -1,17 +1,22 @@
-const words = ["apple", "ant", "banana", "ball", "cat", "car"];
+const prompt = require("prompt-sync")();
+
+const input = prompt("Enter words separated by spaces: ");
+
+const words = input.split(" ");
 
 const groupedWords = new Map();
 
-for (const word of words) {
-    const firstChar = word[0];
+for (let word of words) {
 
-    if (!groupedWords.has(firstChar)) {
-        groupedWords.set(firstChar, []);
+    let firstChar = word[0];
+
+    if (groupedWords.has(firstChar)) {
+        groupedWords.get(firstChar).push(word);
+    } else {
+        groupedWords.set(firstChar, [word]);
     }
-
-    groupedWords.get(firstChar).push(word);
 }
 
-for (const [key, value] of groupedWords) {
-    console.log(key + ":", value);
+for (let [key, value] of groupedWords) {
+    console.log(key + " -> " + value);
 }

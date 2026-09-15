@@ -1,11 +1,22 @@
-let number: number = 17;
+
+const prompt = require("prompt-sync")();
+
+let number: number = Number(
+    prompt("Enter a number: ")
+);
+
 let isPrime: boolean = true;
 
 if (number <= 1) {
+
     isPrime = false;
+
 } else {
+
     for (let i = 2; i <= Math.sqrt(number); i++) {
+
         if (number % i === 0) {
+
             isPrime = false;
             break;
         }
@@ -13,8 +24,12 @@ if (number <= 1) {
 }
 
 if (isPrime) {
+
     console.log(number + " is a Prime Number");
+
 } else {
+
     console.log(number + " is Not a Prime Number");
 }
+
 export {};

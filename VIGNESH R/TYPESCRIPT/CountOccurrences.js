@@ -1,6 +1,9 @@
 "use strict";
-const arr = [10, 20, 30, 20, 40, 20];
-const target = 20;
+Object.defineProperty(exports, "__esModule", { value: true });
+const prompt = require("prompt-sync")();
+const input = prompt("Enter array elements separated by spaces: ");
+const arr = input.split(" ").map(Number);
+const target = Number(prompt("Enter element to count: "));
 let count = 0;
 for (let element of arr) {
     if (element === target) {

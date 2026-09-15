@@ -1,5 +1,6 @@
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Scanner;
 import java.util.stream.Collectors;
 
 class Employee {
@@ -26,31 +27,57 @@ class Employee {
     @Override
     public String toString() {
         return "ID: " + id +
-               ", Name: " + name +
-               ", Age: " + age +
-               ", Salary: " + salary;
+                ", Name: " + name +
+                ", Age: " + age +
+                ", Salary: " + salary;
     }
 }
 
 public class EmployeeFilter {
     public static void main(String[] args) {
 
+        Scanner sc = new Scanner(System.in);
         List<Employee> employees = new ArrayList<>();
 
-        employees.add(new Employee(101, "Vignesh", 22, 30000));
-        employees.add(new Employee(102, "Rahul", 28, 45000));
-        employees.add(new Employee(103, "Priya", 25, 55000));
-        employees.add(new Employee(104, "Karthik", 30, 60000));
+        System.out.print("Enter number of employees: ");
+        int n = sc.nextInt();
 
-        int minAge = 25;
-        double minSalary = 50000;
+        for (int i = 0; i < n; i++) {
+            System.out.println("\nEnter details for Employee " + (i + 1));
+
+            System.out.print("ID: ");
+            int id = sc.nextInt();
+
+            sc.nextLine();
+
+            System.out.print("Name: ");
+            String name = sc.nextLine();
+
+            System.out.print("Age: ");
+            int age = sc.nextInt();
+
+            System.out.print("Salary: ");
+            double salary = sc.nextDouble();
+
+            employees.add(new Employee(id, name, age, salary));
+        }
+
+        System.out.print("\nEnter minimum age: ");
+        int minAge = sc.nextInt();
+
+        System.out.print("Enter minimum salary: ");
+        double minSalary = sc.nextDouble();
 
         List<Employee> filteredEmployees = employees.stream()
                 .filter(emp -> emp.getAge() >= minAge &&
                                emp.getSalary() >= minSalary)
                 .collect(Collectors.toList());
 
-        System.out.println("Filtered Employees:");
-        filteredEmployees.forEach(System.out::println);
+        System.out.println("\nFiltered Employees:");
+        for(Employee emp : filteredEmployees) 
+        {
+            System.out.println(emp);
+        }
+            
     }
 }

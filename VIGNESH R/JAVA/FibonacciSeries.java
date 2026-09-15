@@ -4,10 +4,10 @@ public class FibonacciSeries {
 
     public static void main(String[] args) {
 
-        Scanner scanner = new Scanner(System.in);
+        Scanner sc = new Scanner(System.in);
 
         System.out.print("Enter the number of terms: ");
-        int n = scanner.nextInt();
+        int n = sc.nextInt();
 
         int first = 0, second = 1;
 
@@ -21,6 +21,6 @@ public class FibonacciSeries {
             second = next;
         }
 
-        scanner.close();
+        sc.close();
     }
 }
