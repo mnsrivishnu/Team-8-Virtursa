@@ -1,0 +1,79 @@
+import java.util.Scanner;
+
+public class Calculator {
+
+        public static double add(double firstNumber, double secondNumber) {
+        return firstNumber + secondNumber;
+    }
+
+        public static double subtract(double firstNumber, double secondNumber) {
+        return firstNumber - secondNumber;
+    }
+
+        public static double multiply(double firstNumber, double secondNumber) {
+        return firstNumber * secondNumber;
+    }
+
+        public static double divide(double firstNumber, double secondNumber) {
+        return firstNumber / secondNumber;
+    }
+
+    public static void main(String[] args) {
+
+        Scanner scanner = new Scanner(System.in);
+
+        System.out.println("===== Simple Calculator =====");
+
+        
+        System.out.print("Enter first number: ");
+        double firstNumber = scanner.nextDouble();
+
+        System.out.print("Enter second number: ");
+        double secondNumber = scanner.nextDouble();
+
+        
+        System.out.println("\nSelect an operation:");
+        System.out.println("1. Addition (+)");
+        System.out.println("2. Subtraction (-)");
+        System.out.println("3. Multiplication (*)");
+        System.out.println("4. Division (/)");
+
+        System.out.print("Enter your choice (1-4): ");
+        int choice = scanner.nextInt();
+
+        double result;
+
+        
+        switch (choice) {
+            case 1:
+                result = add(firstNumber, secondNumber);
+                System.out.println("Result = " + result);
+                break;
+
+            case 2:
+                result = subtract(firstNumber, secondNumber);
+                System.out.println("Result = " + result);
+                break;
+
+            case 3:
+                result = multiply(firstNumber, secondNumber);
+                System.out.println("Result = " + result);
+                break;
+
+            case 4:
+                // Prevent division by zero
+                if (secondNumber == 0) {
+                    System.out.println("Error: Cannot divide by zero.");
+                } else {
+                    result = divide(firstNumber, secondNumber);
+                    System.out.println("Result = " + result);
+                }
+                break;
+
+            default:
+                System.out.println("Invalid choice. Please select a number from 1 to 4.");
+        }
+
+        scanner.close();
+    }
+}
