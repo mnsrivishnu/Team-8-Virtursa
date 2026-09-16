@@ -1,0 +1,29 @@
+import * as readline from "readline";
+
+
+function isPalindrome(input: string): boolean {
+    const reversedString = input.split("").reverse().join("");
+
+    return input === reversedString;
+}
+
+
+const readlineInterface = readline.createInterface({
+    input: process.stdin,
+    output: process.stdout
+});
+
+
+readlineInterface.question("Enter a string: ", (input: string) => {
+
+   
+    const processedInput = input.toLowerCase();
+
+    if (isPalindrome(processedInput)) {
+        console.log("The string is a palindrome.");
+    } else {
+        console.log("The string is not a palindrome.");
+    }
+
+    readlineInterface.close();
+});

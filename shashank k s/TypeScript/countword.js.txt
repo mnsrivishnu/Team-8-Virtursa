@@ -1,0 +1,38 @@
+import * as readline from "readline";
+
+function countWordFrequencies(paragraph: string): Map<string, number> {
+    const wordMap = new Map<string, number>();
+
+        const cleanedParagraph = paragraph
+        .toLowerCase()
+        .replace(/[^\w\s]/g, "");
+
+    const words = cleanedParagraph.split(/\s+/);
+
+        for (const word of words) {
+        if (word.length > 0) {
+            const currentCount = wordMap.get(word) || 0;
+            wordMap.set(word, currentCount + 1);
+        }
+    }
+
+    return wordMap;
+}
+
+const readlineInterface = readline.createInterface({
+    input: process.stdin,
+    output: process.stdout
+});
+
+readlineInterface.question("Enter a paragraph: ", (paragraph: string) => {
+
+    const wordFrequencies = countWordFrequencies(paragraph);
+
+    console.log("\nWord Frequencies:");
+
+    for (const [word, count] of wordFrequencies) {
+        console.log(`${word} : ${count}`);
+    }
+
+    readlineInterface.close();
+});
