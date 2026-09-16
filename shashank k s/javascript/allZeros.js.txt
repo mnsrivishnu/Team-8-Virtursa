@@ -1,0 +1,32 @@
+function moveZeroesToEnd(numbers) {
+    let nonZeroIndex = 0;
+
+        for (let currentIndex = 0; currentIndex < numbers.length; currentIndex++) {
+        if (numbers[currentIndex] !== 0) {
+            numbers[nonZeroIndex] = numbers[currentIndex];
+            nonZeroIndex++;
+        }
+    }
+
+        while (nonZeroIndex < numbers.length) {
+        numbers[nonZeroIndex] = 0;
+        nonZeroIndex++;
+    }
+
+    return numbers;
+}
+
+
+const input = prompt("Enter array elements separated by spaces:");
+
+if (input !== null) {
+    const numbers = input
+        .trim()
+        .split(/\s+/)
+        .map(Number);
+
+    const result = moveZeroesToEnd(numbers);
+
+    console.log("Array after moving zeroes to the end:");
+    console.log(result);
+}

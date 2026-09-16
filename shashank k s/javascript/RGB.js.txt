@@ -1,0 +1,24 @@
+function rgbToHex(red, green, blue) {
+    const redHex = red.toString(16).padStart(2, "0");
+    const greenHex = green.toString(16).padStart(2, "0");
+    const blueHex = blue.toString(16).padStart(2, "0");
+
+    return `#${redHex}${greenHex}${blueHex}`.toUpperCase();
+}
+
+
+const red = Number(prompt("Enter Red value (0-255):"));
+const green = Number(prompt("Enter Green value (0-255):"));
+const blue = Number(prompt("Enter Blue value (0-255):"));
+if (
+    red >= 0 && red <= 255 &&
+    green >= 0 && green <= 255 &&
+    blue >= 0 && blue <= 255
+) {
+    const hexadecimalColor = rgbToHex(red, green, blue);
+
+    console.log("RGB Color:", `rgb(${red}, ${green}, ${blue})`);
+    console.log("Hexadecimal Color:", hexadecimalColor);
+} else {
+    console.log("Invalid RGB values. Enter values between 0 and 255.");
+}
